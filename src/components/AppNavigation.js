@@ -86,7 +86,7 @@ class App extends Component {
               >
                 <CSSTransition
                   key={page}
-                  timeout={{ enter: 1000, exit: 1000 }}
+                  timeout={{ enter: 400, exit: 400 }}
                   classNames={{
                     // appear: 'bk-appear',
                     // appearActive: 'bk-active-appear',

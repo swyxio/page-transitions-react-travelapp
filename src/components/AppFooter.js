@@ -18,10 +18,10 @@ class App extends Component {
         }
       }>
         React Clone Made by
-        <A  href="https://twitter.com/swyx">swyx</A>.
+        <A href="https://twitter.com/swyx">swyx</A>.
         Original Made by
         <A href="https://twitter.com/sarah_edo" >sarah_edo</A>.
-        This project is open source, visit <A href="https://github.com/sdras/page-transitions-travelapp" >the repo.</A>
+        This project is open source, visit <A href="https://github.com/sw-yx/page-transitions-react-travelapp" >the repo.</A>
 
       </footer>
     );
