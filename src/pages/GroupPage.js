@@ -1,9 +1,6 @@
 
 import React from 'react'
-import IconBase from '../components/IconBase'
-// import IconMapPin from '../components/IconMapPin'
-import {IconCalendar} from '../components/AppNavTransition'
-// import { WithState, places, users } from '../store';
+import {IconBase, IconCalendar} from '../components/Icons'
 import './GroupPage.css'
 export default class extends React.Component {
 

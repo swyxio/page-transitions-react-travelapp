@@ -1,9 +1,5 @@
 
 import React from 'react'
-// import { mapState } from 'vuex'
-// import IconBase from '~/components/IconBase.vue'
-// import IconMapPin from '~/components/IconMapPin.vue'
-// import { WithState, places } from '../store';
 import { places, users } from '../store';
 import './PlacePage.css'
 export default class extends React.Component {

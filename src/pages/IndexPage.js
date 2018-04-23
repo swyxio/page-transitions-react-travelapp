@@ -1,8 +1,6 @@
 
 import React from 'react'
-// import { mapState } from 'vuex'
-import IconBase from '../components/IconBase'
-import IconMapPin from '../components/IconMapPin'
+import {IconBase, IconMapPin} from '../components/Icons'
 import { WithState, places } from '../store';
 import './IndexPage.css'
 export default class extends React.Component {

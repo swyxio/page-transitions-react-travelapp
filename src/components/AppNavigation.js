@@ -16,7 +16,7 @@ import {
 } from 'react-transition-group';
 
 import AppStats from '../components/AppStats'
-import IconBase from '../components/IconBase'
+import {IconBase} from '../components/Icons'
 import AppMenuDrawer from '../components/AppMenuDrawer'
 import AppNavTransition from './AppNavTransition'
 
