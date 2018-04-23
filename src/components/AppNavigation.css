@@ -51,7 +51,7 @@ header {
   height: 300px; }
 
 .bk-enter-active,
-.bk-leave-active {
+.bk-exit-active {
   transition: all 0.4s ease; }
 
 .bk-enter,

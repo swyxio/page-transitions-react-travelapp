@@ -65,6 +65,11 @@ class App extends Component {
           const firstName = fName($.selectedUser().name)
           const { page } = $.state
           const { menuOpened } = this.state
+          const bkmap = {
+            'index': "header-img1",
+            'place': "header-img2",
+            'group': "header-img3"
+          }
           return (
             <header className={page}>
 
@@ -73,18 +78,39 @@ class App extends Component {
                 <div key="img2" v-else-if="page === 'place'" class="header-img2"></div>
                 <div key="img3" v-else class="header-img3"></div>
               </transition-group> */}
-              <TransitionGroup className="bk-img">
+              <TransitionGroup className="bk-img"
+                // childFactory={child => React.cloneElement(
+                //   child,
+                //   {classNames: "bk", timeout: 5000}
+                // )}
+              >
                 <CSSTransition
-                  timeout={500}
-                  classNames="fade"
+                  key={page}
+                  timeout={{ enter: 1000, exit: 1000 }}
+                  classNames={{
+                    // appear: 'bk-appear',
+                    // appearActive: 'bk-active-appear',
+                    enter: 'bk-enter-to',
+                    enterActive: 'bk-enter-active',
+                    // enterDone: 'bk-enter-done',
+                    exit: 'bk-leave-to',
+                    exitActive: 'bk-leave-active',
+                    // exitDone: 'bk-done-exit'
+                  }}
+                  // in={page === 'index'}
                 >
+                  {/* {page === 'index' && <div className={bkmap['index']} />} */}
+                  <div className={bkmap[page]} />
+                </CSSTransition>
+
+              </TransitionGroup>
+              {/* <div className="bk-img">
                   <div className={{
                     'index': "header-img1",
                     'place': "header-img2",
                     'group': "header-img3"
                   }[page]} />
-                </CSSTransition>
-              </TransitionGroup>
+              </div> */}
 
               <div className="nav-wrapper">
                 <nav>
@@ -127,3 +153,4 @@ function IconThreeDot() {
     <circle className="last" cx="21" cy="12" r="3" />
   </g>
 }
+

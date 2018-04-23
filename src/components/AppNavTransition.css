@@ -1,4 +1,4 @@
-aside p {
+.navAside p {
   text-align: right;
   position: absolute;
   right: 0;
@@ -198,5 +198,5 @@ svg {
 
 @media screen and (max-width: 600px) {
   ul,
-  aside {
+  .navAside {
     display: none; } }

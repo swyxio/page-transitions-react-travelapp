@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 class App extends Component {
   render() {
-    const { width = 18, height = 18, iconName = 'box', iconColor = 'currentColor' } = this.props
+    const { width = 18, height = 18, iconName = 'box', iconColor = 'currentColor', className } = this.props
     return (
       <svg xmlns="http://www.w3.org/2000/svg"
         width={width}
@@ -16,6 +16,7 @@ class App extends Component {
             marginBottom: -2
           }
         }
+        className={className}
       >
         <title id={iconName} lang="en">{iconName} icon</title>
         <g fill={iconColor}>

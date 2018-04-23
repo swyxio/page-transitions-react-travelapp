@@ -65,7 +65,7 @@ header {
   @include header('/header3.jpg');
 }
 .bk-enter-active,
-.bk-leave-active {
+.bk-exit-active {
   transition: all 0.4s ease;
 }
 .bk-enter,
