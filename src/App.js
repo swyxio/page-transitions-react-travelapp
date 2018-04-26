@@ -22,8 +22,8 @@ class App extends Component {
           <AppNavigation />
             <Subscribe to={[State]}>
               {$ =>
-                <TransitionGroup>
-                  <CSSTransition key={window.location} classNames="page" timeout={500}>
+                <TransitionGroup exit={false}>
+                  <CSSTransition key={window.location} classNames="page" timeout={2000}>
                     <Switch>
                       <Route exact path="/" render={() => $.updatePage('index') || <IndexPage />} />
                       <Route path="/group" render={() => $.updatePage('group') || <GroupPage />} />
