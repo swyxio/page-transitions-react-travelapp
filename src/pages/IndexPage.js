@@ -2,6 +2,8 @@
 import React from 'react'
 import { IconBase, IconMapPin } from '../components/Icons'
 import { Subscribe, State, places } from '../store';
+import AppFooter from '../components/AppFooter.js'
+
 import './IndexPage.css'
 export default class extends React.Component {
   mapContainer = React.createRef();
@@ -21,6 +23,7 @@ export default class extends React.Component {
     return (
       <Subscribe to={[State]}>
         {$ =>
+        <React.Fragment>
           <main className="IndexMain">
             <div className="places" ref="places">
               {places.map(place => {
@@ -39,7 +42,11 @@ export default class extends React.Component {
                 Checked in at Honolulu location
           </p>
             </div>
-          </main>}
+          </main>
+
+          <AppFooter />
+        </React.Fragment>
+        }
       </Subscribe>
     )
   }

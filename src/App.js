@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
 import AppNavigation from './components/AppNavigation.js'
-import AppFooter from './components/AppFooter.js'
 import IndexPage from './pages/IndexPage.js'
 import GroupPage from './pages/GroupPage.js'
 import PlacePage from './pages/PlacePage.js'
@@ -21,24 +20,19 @@ class App extends Component {
       <Router>
         <Provider>
           <AppNavigation />
-              <TransitionGroup>
-                  <CSSTransition key={window.location} classNames="page" timeout={300}>
-                    <Subscribe to={[State]}>
-                      {$ =>
-                              <Switch>
-                                <Route exact path="/" render={() => $.updatePage('index') || <IndexPage />} />
-                                <Route path="/group" render={() => $.updatePage('group') || <GroupPage />} />
-                                <Route path="/place" render={() => $.updatePage('place') || <PlacePage currentUser={$.selectedUser()} />} />
-                              </Switch>
-                      }
-                    </Subscribe>
-              </CSSTransition>
-          </TransitionGroup>
-              <TransitionGroup>
-                  <CSSTransition key={window.location} classNames="page" timeout={300}>
-                    <AppFooter />
-              </CSSTransition>
-          </TransitionGroup>
+            <Subscribe to={[State]}>
+              {$ =>
+                <TransitionGroup>
+                  <CSSTransition key={window.location} classNames="page" timeout={500}>
+                    <Switch>
+                      <Route exact path="/" render={() => $.updatePage('index') || <IndexPage />} />
+                      <Route path="/group" render={() => $.updatePage('group') || <GroupPage />} />
+                      <Route path="/place" render={() => $.updatePage('place') || <PlacePage currentUser={$.selectedUser()} />} />
+                    </Switch>
+                  </CSSTransition>
+                </TransitionGroup>
+              }
+            </Subscribe>
         </Provider>
       </Router>
     );
