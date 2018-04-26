@@ -21,20 +21,24 @@ class App extends Component {
       <Router>
         <Provider>
           <AppNavigation />
-          <Subscribe to={[State]}>
-            {$ =>
               <TransitionGroup>
                   <CSSTransition key={window.location} classNames="page" timeout={300}>
-                    <Switch>
-                      <Route exact path="/" render={() => $.updatePage('index') || <IndexPage />} />
-                      <Route path="/group" render={() => $.updatePage('group') || <GroupPage />} />
-                      <Route path="/place" render={() => $.updatePage('place') || <PlacePage currentUser={$.selectedUser()} />} />
-                    </Switch>
-                  </CSSTransition>
-              </TransitionGroup>
-            }
-          </Subscribe>
-          <AppFooter />
+                    <Subscribe to={[State]}>
+                      {$ =>
+                              <Switch>
+                                <Route exact path="/" render={() => $.updatePage('index') || <IndexPage />} />
+                                <Route path="/group" render={() => $.updatePage('group') || <GroupPage />} />
+                                <Route path="/place" render={() => $.updatePage('place') || <PlacePage currentUser={$.selectedUser()} />} />
+                              </Switch>
+                      }
+                    </Subscribe>
+              </CSSTransition>
+          </TransitionGroup>
+              <TransitionGroup>
+                  <CSSTransition key={window.location} classNames="page" timeout={300}>
+                    <AppFooter />
+              </CSSTransition>
+          </TransitionGroup>
         </Provider>
       </Router>
     );
