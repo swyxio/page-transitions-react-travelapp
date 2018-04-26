@@ -4,4 +4,6 @@ some react-transition-group issues are still outstanding as I dont know how to d
 
 this is bootstrapped with create-react-app, so usual procedures apply.
 
-i keep a /docs folder so i can host it on github pages
+this is deployed on Netlify, netlify is bae: <https://page-transitions-react-travelapp.netlify.com>
+
+I owe <https://github.com/xavczen/nextjs-page-transitions> for helping me figure out the transitions because im terrible at transitions.
