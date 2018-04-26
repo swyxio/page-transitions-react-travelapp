@@ -3,10 +3,7 @@ import { Subscribe, State } from '../store';
 import './AppNavigation.css'
 import {
   TweenMax,
-  // TimelineMax,
-  //  Expo,
   Sine,
-  //  Back
 } from 'gsap'
 import { NavLink } from "react-router-dom";
 

@@ -1,7 +1,6 @@
 
 import React from 'react'
 import { IconBase, IconMapPin } from '../components/Icons'
-// import { WithState, places } from '../store';
 import { Subscribe, State, places } from '../store';
 import './IndexPage.css'
 export default class extends React.Component {
@@ -11,7 +10,6 @@ export default class extends React.Component {
     const mapboxgl = require('mapbox-gl/dist/mapbox-gl.js');
     mapboxgl.accessToken =
       'pk.eyJ1Ijoic2RyYXNuZXIiLCJhIjoiY2pmZzBqZmptMjI1eTMzbWl1bGExMHppZyJ9.diPXryPOiyMuqcV4mpNOlg';
-    // const map = new mapboxgl.Map({
     new mapboxgl.Map({
       container: this.mapContainer.current,
       style: 'mapbox://styles/sdrasner/cjfg0watl6rkv2sllf6hepdd5',

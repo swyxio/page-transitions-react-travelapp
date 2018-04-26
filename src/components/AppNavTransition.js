@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import { users, WithState } from '../store';
 import { users, Subscribe, State } from '../store';
 import { IconBase, IconMapPin, IconCalendar } from './Icons'
 import './AppNavTransition.css'
@@ -166,7 +165,7 @@ export default class AppNavTransition extends Component {
                 onClick={() => this.changeUserNav($, i)}
                 key={user.name}
                 className={[user.name === selectedUser.name ? 'profile-photo' : 'profile-photo-secondary', `profile-${i}`].join(' ')}
-                ref={el => this.refArray.push(el)} // `profile${i}`
+                ref={el => this.refArray.push(el)}
               >
                 <div className="online"></div>
                 <img src={user.img} alt={user.name} />
@@ -215,7 +214,6 @@ export default class AppNavTransition extends Component {
                 {selectedUser.days} days traveling
           </p>
             </aside>
-            {/* </transition-group > */}
           </div>
         }}
       </Subscribe>
