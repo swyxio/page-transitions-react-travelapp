@@ -10,10 +10,13 @@ export default class AppNavTransition extends Component {
     following: false,
     saved: false,
   };
-  refArray = []
+  elements = {};
+
   changeUserNav = ($, indexedUser) => {
     if (this.props.pathname === 'group') {
-      const el = this.refArray[0]
+      // this.refArray.forEach(ref => ref && (ref.style.transform = null))
+      // const el = this.refArray[$.state.indexedUser]
+        const el = this.elements.profile0;
       el.style.transform = `translate3d(${-70 +
         indexedUser * 55}px, -70px, 0) scale(0.25)`
     }
@@ -150,7 +153,6 @@ export default class AppNavTransition extends Component {
 
     return tl;
   }
-
   render() {
     return (
       <Subscribe to={[State]}>
@@ -158,14 +160,14 @@ export default class AppNavTransition extends Component {
           const selectedUser = $.selectedUser()
           const { page } = $.state
           const {following} = this.state
-
           return <div className="app-nav-transition">
             {users.map((user, i) => {
               return <div
                 onClick={() => this.changeUserNav($, i)}
                 key={user.name}
                 className={[user.name === selectedUser.name ? 'profile-photo' : 'profile-photo-secondary', `profile-${i}`].join(' ')}
-                ref={el => this.refArray.push(el)}
+                // ref={el => this.refArray.push(el)}
+                ref={element => (this.elements[`profile${i}`] = element)}
               >
                 <div className="online"></div>
                 <img src={user.img} alt={user.name} />

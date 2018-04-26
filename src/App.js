@@ -23,7 +23,7 @@ class App extends Component {
             <Subscribe to={[State]}>
               {$ =>
                 <TransitionGroup exit={false}>
-                  <CSSTransition key={window.location} classNames="page" timeout={2000}>
+                  <CSSTransition key={window.location} classNames="page" timeout={1000}>
                     <Switch>
                       <Route exact path="/" render={() => $.updatePage('index') || <IndexPage />} />
                       <Route path="/group" render={() => $.updatePage('group') || <GroupPage />} />
