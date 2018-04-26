@@ -1,12 +1,12 @@
 
 import React from 'react'
-import {IconBase, IconCalendar} from '../components/Icons'
+import { IconBase, IconCalendar } from '../components/Icons'
 import './GroupPage.css'
 export default class extends React.Component {
 
   render() {
     return (
-      <main>
+      <main className="GroupMain">
         <div className="places">
           <p className="top">Group Activities</p>
           <h1>4 Person Trip to Hawaii</h1>

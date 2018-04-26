@@ -1,4 +1,6 @@
-.wrapper {
+
+.GroupMain {
+  .wrapper {
   margin: 10px 0 20px 0;
   width: 100%;
   display: grid;
@@ -31,4 +33,6 @@ $class-slug: item !default;
 }
 p {
   padding-bottom: 10px;
+}
+  margin-top: 0px;
 }

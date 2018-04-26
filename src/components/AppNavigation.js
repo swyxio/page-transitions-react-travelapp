@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
-import { WithState } from '../store';
+import { Subscribe, State } from '../store';
 import './AppNavigation.css'
-import { TweenMax,
+import {
+  TweenMax,
   // TimelineMax,
   //  Expo,
-    Sine,
-    //  Back
-     } from 'gsap'
-import { Link } from "react-router-dom";
+  Sine,
+  //  Back
+} from 'gsap'
+import { NavLink } from "react-router-dom";
 
 
 import {
@@ -16,16 +17,28 @@ import {
 } from 'react-transition-group';
 
 import AppStats from '../components/AppStats'
-import {IconBase} from '../components/Icons'
+import { IconBase } from '../components/Icons'
 import AppMenuDrawer from '../components/AppMenuDrawer'
 import AppNavTransition from './AppNavTransition'
 
-class App extends Component {
+export default class Header extends Component {
   state = {
     saved: false,
     menuOpened: false
   }
 
+  toggleMenu = () => {
+    this.setState(
+      state => ({ menuOpened: !state.menuOpened }),
+      () => {
+        if (this.state.menuOpened) {
+          this.openMenu();
+        } else {
+          this.closeMenu();
+        }
+      }
+    );
+  };
   openMenu() {
     TweenMax.to('.first', 0.2, {
       x: 18,
@@ -60,9 +73,10 @@ class App extends Component {
   }
   render() {
     return (
-      <WithState>
+      <Subscribe to={[State]}>
         {$ => {
-          const firstName = fName($.selectedUser().name)
+          const selectedUser = $.selectedUser()
+          const firstName = fName(selectedUser.name)
           const { page } = $.state
           const { menuOpened } = this.state
           const bkmap = {
@@ -70,75 +84,41 @@ class App extends Component {
             'place': "header-img2",
             'group': "header-img3"
           }
+
           return (
             <header className={page}>
-
-              {/* <transition-group name="bk" tag="div" class="bk-img">
-                <div key="img1" v-if="page === 'index'" class="header-img1"></div>
-                <div key="img2" v-else-if="page === 'place'" class="header-img2"></div>
-                <div key="img3" v-else class="header-img3"></div>
-              </transition-group> */}
-              <TransitionGroup className="bk-img"
-                // childFactory={child => React.cloneElement(
-                //   child,
-                //   {classNames: "bk", timeout: 5000}
-                // )}
-              >
-                <CSSTransition
-                  key={page}
-                  timeout={{ enter: 400, exit: 400 }}
-                  classNames={{
-                    // appear: 'bk-appear',
-                    // appearActive: 'bk-active-appear',
-                    enter: 'bk-enter-to',
-                    enterActive: 'bk-enter-active',
-                    // enterDone: 'bk-enter-done',
-                    exit: 'bk-leave-to',
-                    exitActive: 'bk-leave-active',
-                    // exitDone: 'bk-done-exit'
-                  }}
-                  // in={page === 'index'}
-                >
-                  {/* {page === 'index' && <div className={bkmap['index']} />} */}
+              <TransitionGroup className="bk-img">
+                <CSSTransition key={page} timeout={400} classNames="bk">
                   <div className={bkmap[page]} />
                 </CSSTransition>
-
               </TransitionGroup>
-              {/* <div className="bk-img">
-                  <div className={{
-                    'index': "header-img1",
-                    'place': "header-img2",
-                    'group': "header-img3"
-                  }[page]} />
-              </div> */}
 
               <div className="nav-wrapper">
                 <nav>
                   <ul>
-                  <li><Link exact="true" to="/">{firstName}'s Home</Link></li>
-                  <li><Link to="/place">{firstName}'s Places</Link></li>
-                  <li><Link to="/group">{firstName}'s Group Trips</Link></li>
+                    <li><NavLink activeClassName="nuxt-link-active" exact to="/">{firstName}'s Home</NavLink></li>
+                    <li><NavLink activeClassName="nuxt-link-active" to="/place">{firstName}'s Places</NavLink></li>
+                    <li><NavLink activeClassName="nuxt-link-active" to="/group">{firstName}'s Group Trips</NavLink></li>
                   </ul>
 
-                  <div onClick={() => this.setState({ menuOpened: !menuOpened })}>
+                  <div onClick={this.toggleMenu}>
                     <IconBase className="menu" iconName="menu" iconColor="white" width="28" height="28">
                       <IconThreeDot />
                     </IconBase>
                   </div>
-                  <AppMenuDrawer firstName={firstName} menuOpened={menuOpened} />
-                  <AppNavTransition />
-                  {page === 'index' && <AppStats />}
+                  {menuOpened && <AppMenuDrawer firstName={firstName} menuOpened={menuOpened} />}
+                  <AppNavTransition pathname={page} />
+                  {page === 'index' && <AppStats selectedUser={selectedUser} />}
                 </nav>
               </div>
             </header>)
         }}
-
-      </WithState>
+      </Subscribe>
     );
   }
 }
 
-export default App;
+
 
 function fName(input) {
   var lastIndex = input.lastIndexOf(' ')

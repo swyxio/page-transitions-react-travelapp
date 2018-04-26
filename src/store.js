@@ -1,6 +1,5 @@
-
-import React from 'react';
-import { Subscribe, Container } from 'unstated';
+import { Container } from 'unstated';
+export { Subscribe } from 'unstated';
 
 export const users = [
   {
@@ -79,7 +78,7 @@ export const places = [
   }
 ]
 
-export class State extends Container {
+class _State extends Container {
 
   state = {
     page: 'index',
@@ -93,21 +92,14 @@ export class State extends Container {
   }
   addFollower() {
     users[this.state.indexedUser].followers++
-    this.setState()
+    this.setState(() => { })
   }
   removeFollower() {
     users[this.state.indexedUser].followers--
-    this.setState()
+    this.setState(() => { })
   }
   changeUser(i) {
     this.setState({ indexedUser: i })
   }
 }
-
-export class WithState extends React.Component {
-  render() {
-    return <Subscribe to={[State]}>
-      {$ => this.props.children($)}
-    </Subscribe>
-  }
-}
+export const State = new _State()

@@ -50,14 +50,16 @@ header {
   width: 100vw;
   height: 300px; }
 
-.bk-enter-active,
-.bk-exit-active {
+.bk-enter,
+.bk-exit {
+  opacity: 0;
   transition: all 0.4s ease; }
 
-.bk-enter,
-.bk-leave-to {
-  transform: scale(1.1) translateZ(0);
-  opacity: 0; }
+.bk-exit-active {
+  transform: scale(1.1) translateZ(0); }
+
+.bk-enter-active {
+  opacity: 1; }
 
 .bk-img {
   position: absolute;

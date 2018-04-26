@@ -85,16 +85,51 @@ hr {
     margin: 10px 0;
   }
 }
-.page-enter-active,
-.page-leave-active {
+/* .page-enter-active,
+.page-exit-active {
   transition: all 0.25s ease;
 }
 .page-enter,
-.page-leave-active {
+.page-exit-active {
+  opacity: 0;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+} */
+
+
+/* .page-enter,
+.page-exit {
+  transition: all 0.25s ease;
+}
+.page-enter-active,
+.page-exit-active {
+  opacity: 0;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+} */
+
+.page-appear,
+.page-enter {
+  opacity: 0;
+}
+
+.page-appear-active,
+.page-enter-active {
+  transition: opacity .3s linear;
+  opacity: 1;
+}
+
+.page-exit {
+  transition: opacity .3s linear;
+  opacity: 1;
+}
+
+.page-exit-active {
   opacity: 0;
   transform: translateZ(0);
   backface-visibility: hidden;
 }
+
 /* screen reader only */
 .hidden {
   position: absolute;
