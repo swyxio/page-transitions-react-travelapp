@@ -50,7 +50,7 @@ export const users = [
     days: 12,
     trips: ['Honolulu', 'Tokyo', 'Osaka']
   }
-]
+];
 export const places = [
   {
     name: 'Honululu',
@@ -76,30 +76,25 @@ export const places = [
     description:
       'Wandered the cobblestone streets and quaint lanes of the town, which has been designated a UNESCO World Heritage site. A walking tour revealed historic architecture, colonial landmarks and alluring shops and restaurants.'
   }
-]
+];
 
 class _State extends Container {
-
   state = {
-    page: 'index',
     indexedUser: 0
-  }
+  };
   selectedUser() {
-    return users[this.state.indexedUser]
-  }
-  updatePage(pageName) {
-    pageName !== this.state.page && this.setState({ page: pageName })
+    return users[this.state.indexedUser];
   }
   addFollower() {
-    users[this.state.indexedUser].followers++
-    this.setState(() => { })
+    users[this.state.indexedUser].followers++;
+    this.setState(() => {});
   }
   removeFollower() {
-    users[this.state.indexedUser].followers--
-    this.setState(() => { })
+    users[this.state.indexedUser].followers--;
+    this.setState(() => {});
   }
   changeUser(i) {
-    this.setState({ indexedUser: i })
+    this.setState({ indexedUser: i });
   }
 }
-export const State = new _State()
+export const State = new _State();
