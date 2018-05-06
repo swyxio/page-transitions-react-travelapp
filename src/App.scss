@@ -97,16 +97,17 @@ hr {
   opacity: 1;
 }
 
-.page-exit {
-  transition: opacity 0.5s linear;
-  opacity: 0;
-}
+// dont need for now since we are using exit={false}
+// .page-exit {
+//   transition: opacity 0.5s linear;
+//   opacity: 0;
+// }
 
-.page-exit-active {
-  opacity: 0;
-  transform: translateZ(0);
-  backface-visibility: hidden;
-}
+// .page-exit-active {
+//   opacity: 0;
+//   transform: translateZ(0);
+//   backface-visibility: hidden;
+// }
 
 /* screen reader only */
 .hidden {
